@@ -14,7 +14,7 @@ public class plndrm{
       return;
     } //end if 
     else if(ch[i]==ch[j]){
-      rcrs(ch, ++i, --j);
+      chck(ch, ++i, --j);
     } //end else if
     else{
       System.out.println("Not a palindrom");

@@ -4,11 +4,11 @@ public class plndrm{
     char[] ch = args[0].toCharArray();
     int start =0;
     int end = ch.length -1;
-    rcrs(ch, start, end);
+    chck(ch, start, end);
 
   } //end main 
 
-  public static void rcrs(char[] ch, int i, int j){
+  public static void chck(char[] ch, int i, int j){
     if(i>=j){
       System.out.println("A palindrom");
       return;

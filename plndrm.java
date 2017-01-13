@@ -6,18 +6,18 @@ public class plndrm{
     int end = ch.length -1;
     rcrs(ch, start, end);
 
-  }
+  } //end main 
 
   public static void rcrs(char[] ch, int i, int j){
     if(i>=j){
       System.out.println("A palindrom");
       return;
-    }
+    } //end if 
     else if(ch[i]==ch[j]){
       rcrs(ch, ++i, --j);
-    }
+    } //end else if
     else{
       System.out.println("Not a palindrom");
-}
-}
-}
+    } //end else
+  }//end rcrs method
+} //end plndrm class

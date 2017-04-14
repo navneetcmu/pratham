@@ -10,6 +10,10 @@ public class sort {
 			count[a[i].key()+1]++; 
 		}
 		
+		for(int i=0; i<count.length-1;i++){
+			count[i+1] += count[i]; 
+		}
+		
 		for(int i=0; i<count.length; i++){
 			System.out.println(count[i]);
 		}

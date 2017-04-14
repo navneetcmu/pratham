@@ -1,4 +1,4 @@
-public class kids {
+public class kids{
 	
 	private String name;
 	private int id; 

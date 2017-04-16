@@ -1,5 +1,3 @@
-import javax.xml.soap.Node;
-
 public class TrieST<Value> {
 	private static int R = 256;
 	private node root;

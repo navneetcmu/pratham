@@ -35,5 +35,14 @@ public class TrieST<Value> {
 		return x; 
 	}
 	
+	//testing this class
+	public static void main(String[] args) {
+		
+		TrieST<Integer> st = new TrieST<Integer>(); 
+		st.put("navneet", 6); 
+		st.put("navn", 7);
+		System.out.println(st.get("navn")); 
+	}
+	
 
 }

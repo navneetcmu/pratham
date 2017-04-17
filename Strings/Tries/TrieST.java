@@ -1,3 +1,5 @@
+package string;
+
 import java.util.*; 
 
 public class TrieST<Value> {
@@ -17,7 +19,9 @@ public class TrieST<Value> {
 	
 	private node get(node x, String key, int d){
 		if(x==null) return null;
-		if(d == key.length()) return x;
+		if(d == key.length()) {
+			return x;
+		}
 		char c = key.charAt(d); 
 		return get(x.next[c], key, d+1); 
 	}
@@ -74,7 +78,6 @@ public class TrieST<Value> {
 		if(x.val != null){
 			ans.add(pre);
 		}
-		
 		for(char c=0; c<R; c++){
 					collect(x.next[c], pre+c, ans); 
 				}

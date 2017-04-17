@@ -1,3 +1,5 @@
+import java.util.*; 
+
 public class TrieST<Value> {
 	private static int R = 256;
 	private node root;
@@ -35,14 +37,56 @@ public class TrieST<Value> {
 		return x; 
 	}
 	
-	//testing this class
-	public static void main(String[] args) {
+	public  Iterable<String> collect(){
+		Queue<String> q = new LinkedList<String>(); 
+		for(int i=0; i<R; i++){
+			if(root.next[i] != null){
+				char c = (char) i; 
+				String s = ""+c;
+				collect(root.next[i], s, q);
+			}
+		}
 		
-		TrieST<Integer> st = new TrieST<Integer>(); 
-		st.put("navneet", 6); 
-		st.put("navn", 7);
-		System.out.println(st.get("navn")); 
+		return q; 
 	}
 	
+	private void collect(node x, String pre, Queue<String> ans){
+		if(x==null) return;
+		
+		if(x.val != null){
+			ans.add(pre);
+		}
+		
+		if(x!=null){
+			for(int c=0; c<R; c++){
+				if(x.next[c] != null){
+					char s = (char) c; 
+					String updt = pre + s; 
+					collect(x.next[c], updt, ans); 
+				}
+			}
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		
+		TrieST<Integer> st = new TrieST<Integer>();  
+		st.put("amul", 4); 
+		st.put("neo", 3);
+		st.put("navneet", 7);
+		st.put("nalin", 5);
+		st.put("nal", 3);
+		st.put("vikas", 5);
+		st.put("atul", 4);
+		Iterable<String> it = st.collect();
+		Iterator<String> et = it.iterator(); 
+		
+		while(et.hasNext()){
+			System.out.println(et.next());
+		}
+		
+	}
 
 }

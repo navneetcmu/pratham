@@ -1,5 +1,3 @@
-package string;
-
 import java.util.*; 
 
 public class TrieST<Value> {
@@ -49,6 +47,26 @@ public class TrieST<Value> {
 		return q; 
 	}
 	
+	public Iterable<String> keyThatMatch(String pat){
+		Queue<String> q = new LinkedList<String>();
+		collect(root, "", pat, q);
+		return q; 
+	}
+	
+	
+	private void collect(node x, String pre, String pat, Queue<String> ans){
+		
+		int d = pre.length(); 
+		if(x==null) return;
+		if(d==pat.length() && x.val !=null) ans.add(pre); 
+		if(d==pat.length()) return; 
+		
+		char next = pat.charAt(d); 
+		for(char c=0; c<R; c++){
+					if(next == '.' || next == c)
+						collect(x.next[c], pre+c, pat, ans); 
+				}
+	}
 	
 	private void collect(node x, String pre, Queue<String> ans){
 		if(x==null) return;
@@ -66,19 +84,21 @@ public class TrieST<Value> {
 public static void main(String[] args) {
 		
 		TrieST<Integer> st = new TrieST<Integer>();  
-		st.put("amul", 4); 
-		st.put("neo", 3);
-		st.put("navneet", 7);
-		st.put("nalin", 5);
-		st.put("nal", 3);
-		st.put("vikas", 5);
-		st.put("atul", 4);
-		String test = "nal";
+		st.put("by", 4); 
+		st.put("sea", 3);
+		st.put("sells", 7);
+		st.put("she", 5);
+		st.put("shells", 3);
+		st.put("the", 5);
+		String test = "sh";
+		String match = ".he"; 
 		
 		Iterable<String> it = st.keys(); 
 		Iterable<String> at1 = st.keysWithPrefix(test); 
+		Iterable<String> zt1 = st.keyThatMatch(match); 
 		Iterator<String> et = it.iterator(); 
 		Iterator<String> at = at1.iterator(); 
+		Iterator<String> zt = zt1.iterator(); 
 		
 		System.out.println("Demonstrating keys() function");
 		while(et.hasNext()){
@@ -90,7 +110,10 @@ public static void main(String[] args) {
 			System.out.println(at.next());
 		}
 		
-		
+		System.out.println("Demonstrating keysThatMatch() function with match = " + match);
+		while(zt.hasNext()){
+			System.out.println(zt.next());
+		}
 		
 	}
 

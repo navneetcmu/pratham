@@ -87,6 +87,21 @@ public class TrieST<Value> {
 		
 	}
 	
+	public String longestPrefix(String s){
+		int len = search(root, s, 0, 0);
+		return s.substring(0,len); 
+	}
+	
+	private int search(node x, String s, int d, int length){
+		
+		if(x==null) return length; 
+		if(x.val != null) length = d;
+		if(d == s.length()) return length; 
+		char c = s.charAt(d);
+		return search(x.next[c], s, d+1, length); 
+		
+	}
+
 	private void collect(node x, String pre, String pat, Queue<String> ans){
 		
 		int d = pre.length(); 
@@ -126,7 +141,7 @@ public class TrieST<Value> {
 		String match = ".he"; 
 		
 		st.delete("by");
-		
+		System.out.println(st.longestPrefix("shellsort"));
 		
 		Iterable<String> it = st.keys(); 
 		Iterable<String> at1 = st.keysWithPrefix(test); 

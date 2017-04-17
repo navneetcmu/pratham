@@ -1,3 +1,5 @@
+package string;
+
 import java.util.*; 
 
 public class TrieST<Value> {
@@ -35,6 +37,16 @@ public class TrieST<Value> {
 		char c = key.charAt(d);
 		x.next[c] = put(x.next[c], key, val, d+1);
 		return x; 
+	}
+	
+	public Iterable<String> keys(){
+		return keysWithPrefix(""); 
+	}
+	
+	public Iterable<String> keysWithPrefix(String pre){
+		Queue<String> q = new LinkedList<String>();
+		collect(get(root, pre, 0), pre, q);
+		return q; 
 	}
 	
 	public  Iterable<String> collect(){
@@ -80,12 +92,30 @@ public class TrieST<Value> {
 		st.put("nal", 3);
 		st.put("vikas", 5);
 		st.put("atul", 4);
-		Iterable<String> it = st.collect();
-		Iterator<String> et = it.iterator(); 
 		
+		Iterable<String> it = st.keys(); 
+		Iterable<String> at = st.keysWithPrefix("na"); 
+		Iterable<String> zt = st.collect();
+		Iterator<String> et = it.iterator(); 
+		Iterator<String> at1 = at.iterator(); 
+		Iterator<String> zt1 = zt.iterator(); 
+		
+		System.out.println("Demonstrating keys() function");
 		while(et.hasNext()){
 			System.out.println(et.next());
 		}
+		
+		System.out.println("Demonstrating keyswithprefix() function");
+		while(at1.hasNext()){
+			System.out.println(at1.next());
+		}
+		
+		System.out.println("Demonstrating collect() function");
+		while(zt1.hasNext()){
+			System.out.println(zt1.next());
+		}
+		
+		
 		
 	}
 

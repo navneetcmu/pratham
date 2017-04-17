@@ -2,7 +2,7 @@ package string;
 
 import java.util.*; 
 
-public class TrieST<Value> {
+public class TrieST_self<Value> {
 	private static int R = 256;
 	private node root;
 	

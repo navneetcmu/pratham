@@ -1,6 +1,9 @@
+package strings;
+
 import java.util.*; 
 
 public class TrieST<Value> {
+	
 	private static int R = 256;
 	private node root;
 	
@@ -55,6 +58,34 @@ public class TrieST<Value> {
 		return q; 
 	}
 	
+	public void delete(String key){
+		root = delete(root, key, 0); 
+	}
+	
+	private node delete(node x,String key, int d){
+		
+		if(x==null) return null;
+		
+		if(d == key.length()){
+			x.val = null;
+		}
+		else{
+			char c = key.charAt(d); 
+			x.next[c] = delete(x.next[c], key, d+1); 	
+		}
+		
+		if(x.val != null) return x; 
+		
+		for(char c=0; c < R; c++){
+			if(x.next[c] != null) {
+				return x;
+			}
+			
+		}
+		
+		return null; 
+		
+	}
 	
 	private void collect(node x, String pre, String pat, Queue<String> ans){
 		
@@ -79,10 +110,10 @@ public class TrieST<Value> {
 		for(char c=0; c<R; c++){
 					collect(x.next[c], pre+c, ans); 
 				}
-			}
+    }
 	
 	
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		TrieST<Integer> st = new TrieST<Integer>();  
 		st.put("by", 4); 
@@ -93,6 +124,9 @@ public static void main(String[] args) {
 		st.put("the", 5);
 		String test = "sh";
 		String match = ".he"; 
+		
+		st.delete("by");
+		
 		
 		Iterable<String> it = st.keys(); 
 		Iterable<String> at1 = st.keysWithPrefix(test); 
@@ -111,9 +145,10 @@ public static void main(String[] args) {
 			System.out.println(at.next());
 		}
 		
+		
 		System.out.println("Demonstrating keysThatMatch() function with match = " + match);
 		while(zt.hasNext()){
-			System.out.println(zt.next());  
+			System.out.println(zt.next());
 		}
 		
 	}

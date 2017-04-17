@@ -43,6 +43,17 @@ public class TrieST_self<Value> {
 		return keysWithPrefix(""); 
 	}
 	
+	public void delete(String key){
+		node del = new node(); 
+		del = get(root, key, 0);
+		del.val = (Value) null;
+		for(int i=0; i<R; i++){
+			if(del.next[i] != null) return; 
+		}
+		del = null;
+		
+	}
+	
 	public Iterable<String> keysWithPrefix(String pre){
 		Queue<String> q = new LinkedList<String>();
 		collect(get(root, pre, 0), pre, q);

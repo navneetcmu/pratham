@@ -1,4 +1,4 @@
-public class bsearch {
+public class bsearch1 {
 	
 public static int bsearch(String text, String pattern){
 	int n = text.length();

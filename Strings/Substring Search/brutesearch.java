@@ -1,3 +1,6 @@
+//When patterns and text are overlapping, for eg. pat = aabaa and text = aabaabaaaa, this code will fail as we are not decrementing the text pointer
+//Anyways, writing it was fun :) 
+
 public class brutesearch {
 
 public static boolean search(String text, String pattern){

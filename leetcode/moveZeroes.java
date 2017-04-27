@@ -1,4 +1,4 @@
-public class moveZeroesSolution {
+public class Solution {
     public void moveZeroes(int[] nums) {
         int i=0, j=0, zeros=0;
         while(j<nums.length){

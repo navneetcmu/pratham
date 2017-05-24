@@ -8,7 +8,7 @@
  * }
  */
 public class Solution {
-    int depth=0, dr=0, dl=0; 
+    int depth=0;
     public int maxDepth(TreeNode root) {
         if(root==null) return 0;
         depth = 1+ mx(maxDepth(root.right), maxDepth(root.left)); 

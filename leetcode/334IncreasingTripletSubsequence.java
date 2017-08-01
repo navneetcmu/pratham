@@ -30,6 +30,7 @@ public class Solution {
                    low_buff=nums[i]; 
                } 
                else{
+                   //here we have to make sure that number is not same as low_buff because we have to find increasing sequence. 
                    if(nums[i]<low_f && nums[i]!=low_buff){
                        low_b = low_buff;
                        low_f = nums[i]; 
